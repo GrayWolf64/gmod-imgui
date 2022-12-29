@@ -22,7 +22,7 @@ namespace DXHook {
 		VK_MULTIPLY,
 		VK_DIVIDE,
 		VK_SUBTRACT,
-		VK_DELETE // more are in here, just in mainDX.cpp 
+		VK_DELETE // more are in here, just in mainDX.cpp
 	};
 
 	void UpdateImGUI() {
@@ -44,7 +44,7 @@ namespace DXHook {
 		}
 		else {
 			io.MouseDown[1] = false;
-		} 
+		}
 
 		if (io.WantCaptureMouse) { // do not ask
 			for (int keyCode : keyCodes) {

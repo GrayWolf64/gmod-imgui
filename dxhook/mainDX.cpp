@@ -74,7 +74,7 @@ namespace DXHook {
 
             oldFunc = (EndScene)d3d9Device[42]; // cast our void* address to a function description btw 42 is the EndScene index
 
-            DetourTransactionBegin(); // use MS detours to detour our EndScene 
+            DetourTransactionBegin(); // use MS detours to detour our EndScene
             DetourUpdateThread(GetCurrentThread());
             DetourAttach(&(PVOID&)oldFunc, EndSceneHook); // if im gon be straight honest i took this from guidedhacking and I don't entirely get
             // the "&(PVOID&)"
@@ -93,7 +93,7 @@ namespace DXHook {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO();// (void)io;
-        
+
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
         //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
@@ -147,7 +147,7 @@ namespace DXHook {
         Sleep(150);
 
         return 0;
-	} 
+	}
 
     int Cleanup(GarrysMod::Lua::ILuaBase* LUA) {
         FreeConsole();
