@@ -25,12 +25,9 @@ namespace DXHook {
 		ImGui::NewFrame();
 		DXHook::UpdateImGUI();
 
-		bool showWind = true;
-
 		ImGui::SetNextWindowFocus();
 
 		/*
-		// test panel
 		ImGui::Begin("Shader Modifier");
 		ImGui::TextColored(ImVec4(0, 1, 0, 1), "Test Shader Modifier.. don't do any other things for now.");
 		ImGui::End();
