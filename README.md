@@ -1,3 +1,4 @@
 # ImGui4G
 
-used [Trailing Whitespace Visualizer](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.TrailingWhitespaceVisualizer)
+Use [Trailing Whitespace Visualizer](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.TrailingWhitespaceVisualizer).
+Use MS Visual Studio 2022 to build x86 Release.
