@@ -105,12 +105,13 @@ namespace DXHook {
 
         ImGui_ImplWin32_Init(GetProcessWindow());
 
-        RECT WndRect;
-        GetWindowRect(GetProcessWindow(), &WndRect);
-        int WndWide = (WndRect.right) - (WndRect.left);
-        int WndHeight = (WndRect.bottom) - (WndRect.top);
-        std::cout << "Process window rect w: " << WndWide << " h: " << WndHeight << std::endl;
+        using namespace std;
+        static bool isFullScreen;
 
+        int WndWide = (resolutionDetails.right) - (resolutionDetails.left);
+        int WndHeight = (resolutionDetails.bottom) - (resolutionDetails.top);
+
+        // GetSystemMetrics(SM_CYCAPTION)
         LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
         LUA->GetField(-1, "ScrW");
         LUA->Call(0, 1);
@@ -121,11 +122,23 @@ namespace DXHook {
         LUA->Call(0, 1);
         int ScrH = (int)LUA->GetNumber(-1);
         LUA->Pop();
-        std::cout << "Client screen res w: " << ScrW << " h: " << ScrH << std::endl;
 
         ImGui::GetMainViewport()->WorkSize = ImVec2(ScrW, ScrH);
-        io.DisplaySize.x = ScrW; // width
-        io.DisplaySize.y = ScrH; // height
+        int ScrX = GetSystemMetrics(SM_CXSCREEN);
+        int ScrY = GetSystemMetrics(SM_CYSCREEN);
+
+        if (ScrX == WndWide && ScrY == WndHeight)
+            isFullScreen = true;
+        else
+            isFullScreen = false;
+
+        cout << "Client Rect W: " << WndWide << " H: " << WndHeight << endl;
+        cout << "Client Game Res Settings (Option) W: " << ScrW << " H: " << ScrH << endl;
+        cout << "System Screen X: " << ScrX << " Y: " << ScrY << endl;
+        cout << "isFullScreen: " << isFullScreen << endl;
+
+        //io.DisplaySize.x = ScrX;
+        //io.DisplaySize.y = ScrY;
 
         // setup key codes
         // 0-9 key codes
