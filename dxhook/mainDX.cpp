@@ -45,11 +45,14 @@ namespace DXHook {
 		LUA->Pop();
 	}
 
-	int Initialize(GarrysMod::Lua::ILuaBase* LUA) { // Used for setting up dummy device, and endscene hook
-        AllocConsole();
-        FILE* pFile = nullptr;
+	int Initialize(GarrysMod::Lua::ILuaBase* LUA, bool OpenExConsole) { // Used for setting up dummy device, and endscene hook
 
-        freopen_s(&pFile, "CONOUT$", "w", stdout); // cursed way to redirect stdout to our own console
+        if (OpenExConsole)
+        {
+            AllocConsole();
+            FILE* pFile = nullptr;
+            freopen_s(&pFile, "CONOUT$", "w", stdout); // cursed way to redirect stdout to our own console
+        }
 
         HMODULE hDLL;
         hDLL = GetModuleHandleA("d3d9.dll"); // Attempt to locate the d3d9 dll that gmod loaded
@@ -59,16 +62,15 @@ namespace DXHook {
             return 0;
         }
 
-
         if (GetD3D9Device(d3d9Device, sizeof(d3d9Device)))
         {
             //hook stuff using the dumped addresses
 
+            using namespace std;
+            stringstream hexLoc;
+            hexLoc.setf(ios_base::hex, ios_base::basefield);
 
-            std::stringstream hexLoc;
-            hexLoc.setf(std::ios_base::hex, std::ios_base::basefield);
-
-            hexLoc << std::string("EndScene functions address: ") << (uintptr_t)d3d9Device[42];
+            hexLoc << string("EndScene functions address: ") << (uintptr_t)d3d9Device[42];
 
             error(LUA, hexLoc.str().c_str()); // it's called "error" but its more of a print
 
@@ -95,7 +97,6 @@ namespace DXHook {
         ImGuiIO& io = ImGui::GetIO();// (void)io;
 
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-        //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
         RECT resolutionDetails;
         GetClientRect(GetProcessWindow(), &resolutionDetails);
@@ -132,10 +133,13 @@ namespace DXHook {
         else
             isFullScreen = false;
 
-        cout << "Client Rect W: " << WndWide << " H: " << WndHeight << endl;
-        cout << "Client Game Res Settings (Option) W: " << ScrW << " H: " << ScrH << endl;
-        cout << "System Screen X: " << ScrX << " Y: " << ScrY << endl;
-        cout << "isFullScreen: " << isFullScreen << endl;
+        if (OpenExConsole)
+        {
+            cout << "Client Rect W: " << WndWide << " H: " << WndHeight << endl;
+            cout << "Client Game Res Settings (Option) W: " << ScrW << " H: " << ScrH << endl;
+            cout << "System Screen X: " << ScrX << " Y: " << ScrY << endl;
+            cout << "isFullScreen: " << isFullScreen << endl;
+        }
 
         //io.DisplaySize.x = ScrX;
         //io.DisplaySize.y = ScrY;

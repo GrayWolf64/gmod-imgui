@@ -25,7 +25,7 @@ namespace DXHook {
 	extern std::vector<int> keyCodes;
 
 	extern inline void error(GarrysMod::Lua::ILuaBase* LUA, const char* str);
-	extern int Initialize(GarrysMod::Lua::ILuaBase* LUA); // Used for setting up dummy device, and endscene hook
+	extern int Initialize(GarrysMod::Lua::ILuaBase* LUA, bool OpenExConsole); // Used for setting up dummy device, and endscene hook
 	extern int Cleanup(GarrysMod::Lua::ILuaBase* LUA); // Used for restoring the EndScene
 	extern void UpdateImGUI();
 }

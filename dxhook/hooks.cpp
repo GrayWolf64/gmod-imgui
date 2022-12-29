@@ -49,5 +49,4 @@ namespace DXHook {
         return result;
 	}
 
-
 }
