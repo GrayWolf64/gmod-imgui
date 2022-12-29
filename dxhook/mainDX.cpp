@@ -1,4 +1,4 @@
-#include "Interface.h"
+#include "../Interface.h"
 #include "mainHook.h"
 #include <Windows.h>
 #include <iostream>
@@ -105,26 +105,29 @@ namespace DXHook {
 
         ImGui_ImplWin32_Init(GetProcessWindow());
 
+        RECT WndRect;
+        GetWindowRect(GetProcessWindow(), &WndRect);
+        int WndWide = (WndRect.right) - (WndRect.left);
+        int WndHeight = (WndRect.bottom) - (WndRect.top);
+        std::cout << "Process window rect w: " << WndWide << " h: " << WndHeight;
+
         LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
         LUA->GetField(-1, "ScrW");
         LUA->Call(0, 1);
         int ScrW = (int)LUA->GetNumber(-1);
         LUA->Pop();
-
         LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
         LUA->GetField(-1, "ScrH");
         LUA->Call(0, 1);
         int ScrH = (int)LUA->GetNumber(-1);
         LUA->Pop();
-
-        std::cout << "Got client screen res w: " << ScrW << " h: " << ScrH;
+        std::cout << "Client screen res w: " << ScrW << " h: " << ScrH;
 
         ImGui::GetMainViewport()->WorkSize = ImVec2(ScrW, ScrH);
         io.DisplaySize.x = ScrW; // width
         io.DisplaySize.y = ScrH; // height
 
         // setup key codes
-
         // 0-9 key codes
         for (int i = 0x30; i <= 0x39; i++) {
             keyCodes.push_back(i);
