@@ -109,7 +109,7 @@ namespace DXHook {
         GetWindowRect(GetProcessWindow(), &WndRect);
         int WndWide = (WndRect.right) - (WndRect.left);
         int WndHeight = (WndRect.bottom) - (WndRect.top);
-        std::cout << "Process window rect w: " << WndWide << " h: " << WndHeight;
+        std::cout << "Process window rect w: " << WndWide << " h: " << WndHeight << std::endl;
 
         LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
         LUA->GetField(-1, "ScrW");
@@ -121,7 +121,7 @@ namespace DXHook {
         LUA->Call(0, 1);
         int ScrH = (int)LUA->GetNumber(-1);
         LUA->Pop();
-        std::cout << "Client screen res w: " << ScrW << " h: " << ScrH;
+        std::cout << "Client screen res w: " << ScrW << " h: " << ScrH << std::endl;
 
         ImGui::GetMainViewport()->WorkSize = ImVec2(ScrW, ScrH);
         io.DisplaySize.x = ScrW; // width
