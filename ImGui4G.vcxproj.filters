@@ -15,6 +15,9 @@
     <Filter Include="headers\detours">
       <UniqueIdentifier>{ad333c04-75e7-4dcb-8eaf-a5037030c9df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="headers\glua">
+      <UniqueIdentifier>{1f245fcf-2d97-451c-9a8d-484a9776b4e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -50,26 +53,26 @@
     <ClInclude Include="imgui\imconfig.h">
       <Filter>imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Interface.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="LuaBase.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceCompat.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Types.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="UserData.h">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="detours.h">
       <Filter>headers\detours</Filter>
     </ClInclude>
     <ClInclude Include="detver.h">
       <Filter>headers\detours</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>headers\glua</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaBase.h">
+      <Filter>headers\glua</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCompat.h">
+      <Filter>headers\glua</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>headers\glua</Filter>
+    </ClInclude>
+    <ClInclude Include="UserData.h">
+      <Filter>headers\glua</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
