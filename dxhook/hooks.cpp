@@ -27,11 +27,25 @@ namespace DXHook {
 
 		ImGui::SetNextWindowFocus();
 
-		/*
-		ImGui::Begin("Shader Modifier");
-		ImGui::TextColored(ImVec4(0, 1, 0, 1), "Test Shader Modifier.. don't do any other things for now.");
+		static bool showWnd = true;
+		static float f = 0.0f;
+		static int counter = 0;
+
+		ImGui::Begin("Hello, world!");
+
+		ImGui::Text("This is some useful text.");
+		ImGui::Checkbox("Another Window", &showWnd);
+
+		ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
+		ImGui::ColorEdit3("clear color", (float*)&showWnd);
+
+		if (ImGui::Button("Button"))
+			counter++;
+		ImGui::SameLine();
+		ImGui::Text("counter = %d", counter);
+
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::End();
-		*/
 
 		ImGui::ShowDemoWindow();
 
