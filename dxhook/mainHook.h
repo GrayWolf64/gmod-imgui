@@ -4,7 +4,6 @@
 #include <d3d9.h>
 #include "../Interface.h"
 #include "../imgui/imgui.h"
-#include <Windows.h>
 #include <vector>
 
 namespace DXHook
