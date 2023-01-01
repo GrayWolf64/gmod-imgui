@@ -59,19 +59,19 @@
     <ClInclude Include="detver.h">
       <Filter>headers\detours</Filter>
     </ClInclude>
-    <ClInclude Include="Interface.h">
+    <ClInclude Include="glua\Interface.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
-    <ClInclude Include="LuaBase.h">
+    <ClInclude Include="glua\LuaBase.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
-    <ClInclude Include="Types.h">
+    <ClInclude Include="glua\SourceCompat.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
-    <ClInclude Include="UserData.h">
+    <ClInclude Include="glua\Types.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCompat.h">
+    <ClInclude Include="glua\UserData.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
   </ItemGroup>

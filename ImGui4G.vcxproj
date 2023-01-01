@@ -151,6 +151,11 @@
     <ClInclude Include="detver.h" />
     <ClInclude Include="dxhook\mainHook.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="glua\Interface.h" />
+    <ClInclude Include="glua\LuaBase.h" />
+    <ClInclude Include="glua\SourceCompat.h" />
+    <ClInclude Include="glua\Types.h" />
+    <ClInclude Include="glua\UserData.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx9.h" />
@@ -159,11 +164,6 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
-    <ClInclude Include="Interface.h" />
-    <ClInclude Include="LuaBase.h" />
-    <ClInclude Include="SourceCompat.h" />
-    <ClInclude Include="Types.h" />
-    <ClInclude Include="UserData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dxhook\dummyDeviceTrick.cpp" />

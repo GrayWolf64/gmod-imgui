@@ -2,7 +2,7 @@
 #define MAINHOOK_H
 
 #include <d3d9.h>
-#include "../Interface.h"
+#include "../glua/Interface.h"
 #include "../imgui/imgui.h"
 #include <vector>
 

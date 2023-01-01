@@ -1,4 +1,4 @@
-#include "../Interface.h"
+#include "../glua/Interface.h"
 #include "mainHook.h"
 #include <Windows.h>
 #include <iostream>
