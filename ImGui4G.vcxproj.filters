@@ -1,119 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="imgui">
-      <UniqueIdentifier>{44369626-e585-4bc7-8280-94874cda1f23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="headers">
+    <Filter Include="Headers">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="headers\detours">
+    <Filter Include="Headers\detours">
       <UniqueIdentifier>{ad333c04-75e7-4dcb-8eaf-a5037030c9df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="headers\glua">
+    <Filter Include="Headers\glua">
       <UniqueIdentifier>{1f245fcf-2d97-451c-9a8d-484a9776b4e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{44369626-e585-4bc7-8280-94874cda1f23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
-      <Filter>headers</Filter>
+      <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="d3d9.h">
-      <Filter>headers</Filter>
+      <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="dxhook\mainHook.h">
-      <Filter>headers</Filter>
+      <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imstb_truetype.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imstb_textedit.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imstb_rectpack.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui_internal.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui_impl_win32.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui_impl_dx9.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imconfig.h">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="detours.h">
-      <Filter>headers\detours</Filter>
+      <Filter>Headers\detours</Filter>
     </ClInclude>
     <ClInclude Include="detver.h">
-      <Filter>headers\detours</Filter>
+      <Filter>Headers\detours</Filter>
     </ClInclude>
     <ClInclude Include="glua\Interface.h">
-      <Filter>headers\glua</Filter>
+      <Filter>Headers\glua</Filter>
     </ClInclude>
     <ClInclude Include="glua\LuaBase.h">
-      <Filter>headers\glua</Filter>
+      <Filter>Headers\glua</Filter>
     </ClInclude>
     <ClInclude Include="glua\SourceCompat.h">
-      <Filter>headers\glua</Filter>
+      <Filter>Headers\glua</Filter>
     </ClInclude>
     <ClInclude Include="glua\Types.h">
-      <Filter>headers\glua</Filter>
+      <Filter>Headers\glua</Filter>
     </ClInclude>
     <ClInclude Include="glua\UserData.h">
-      <Filter>headers\glua</Filter>
+      <Filter>Headers\glua</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dxhook\dummyDeviceTrick.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="dxhook\hooks.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_demo.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_draw.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_impl_dx9.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_impl_win32.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_widgets.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_tables.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="dxhook\mainDX.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="dxhook\windowSetup.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_win32_customimpl.cpp">
-      <Filter>imgui</Filter>
+      <Filter>ImGui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
