@@ -7,6 +7,6 @@ Other Tools Used:
 Use MS Visual Studio 2022 to build x86 Release.
 
 Third-Party Project(s) Used:
-1. [ImGui](https://github.com/ocornut/imgui)
+1. [Dear ImGui](https://github.com/ocornut/imgui)
 2. [Detours](https://github.com/microsoft/detours)
 3. [DXHooker](https://github.com/MoxPoto/DXHooker)
