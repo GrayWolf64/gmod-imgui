@@ -65,13 +65,13 @@
     <ClInclude Include="LuaBase.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
-    <ClInclude Include="SourceCompat.h">
-      <Filter>headers\glua</Filter>
-    </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
     <ClInclude Include="UserData.h">
+      <Filter>headers\glua</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceCompat.h">
       <Filter>headers\glua</Filter>
     </ClInclude>
   </ItemGroup>
