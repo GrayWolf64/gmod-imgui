@@ -14,7 +14,8 @@ namespace DXHook
 
 	HRESULT __stdcall EndSceneHook(LPDIRECT3DDEVICE9 pDevice)
 	{
-		if (!gotDevice) {
+		if (!gotDevice)
+		{
 			gotDevice = true;
 			device = pDevice;
 

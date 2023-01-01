@@ -7,7 +7,8 @@
 #include <Windows.h>
 #include <vector>
 
-namespace DXHook {
+namespace DXHook
+{
 	typedef HRESULT(__stdcall* EndScene)(LPDIRECT3DDEVICE9);
 
 	extern EndScene oldFunc;
