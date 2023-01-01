@@ -14,7 +14,7 @@ extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg
 
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    /* Currently need a way to delegate input to ImGui whilest handling it accordingly to gmod aswell..
+    /* currently need a way to delegate input to ImGui whilest handling it accordingly to gmod aswell
     if (ImGui::GetIO().WantCaptureKeyboard || ImGui::GetIO().WantCaptureMouse)
         return ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
     */
@@ -48,7 +48,7 @@ namespace DXHook
 
 	int Initialize(GarrysMod::Lua::ILuaBase* LUA, bool OpenExConsole)
     {
-        // Used for setting up dummy device, and endscene hook.
+        // used for setting up dummy device, and endscene hook
 
         // setup key codes
         // 0-9 key codes
@@ -71,7 +71,7 @@ namespace DXHook
         }
 
         HMODULE hDLL;
-        hDLL = GetModuleHandleA("d3d9.dll"); // Attempt to locate the d3d9 dll that gmod loaded
+        hDLL = GetModuleHandleA("d3d9.dll"); // attempt to locate the d3d9 dll that gmod loaded
 
         if (hDLL == NULL)
         {
@@ -114,7 +114,7 @@ namespace DXHook
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO();// (void)io;
 
-        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
         RECT resolutionDetails;
         HWND gamehwnd = GetProcessWindow();
@@ -202,5 +202,5 @@ namespace DXHook
         }
         return 0;
     }
-    // Used for restoring the EndScene.
+    // used for restoring the EndScene
 }

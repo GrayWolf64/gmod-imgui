@@ -27,7 +27,7 @@ namespace DXHook
 		ImGui::NewFrame();
 		DXHook::UpdateImGUI();
 
-        // Removing SetNextWindowFocus helps the window's popups work properly.
+        // removing SetNextWindowFocus here helps the window's popups work properly
 		ImGui::ShowDemoWindow();
 
 		ImGui::EndFrame();
