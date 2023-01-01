@@ -51,7 +51,7 @@ namespace DXHook
 			io.MouseDown[1] = false;
 		}
 
-		if (io.WantCaptureMouse)
+		if (io.WantCaptureKeyboard)
 		{ // do not ask
 			for (int keyCode : keyCodes)
 			{
