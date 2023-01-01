@@ -1,6 +1,8 @@
 # gmod-imgui
 
-Recommend using [Trailing Whitespace Visualizer](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.TrailingWhitespaceVisualizer).
+Other Tools Used: 
+1. [Trailing Whitespace Visualizer](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.TrailingWhitespaceVisualizer).
+2. [Intel® oneAPI DPC++/C++ Compiler](https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compiler.html)
 
 Use MS Visual Studio 2022 to build x86 Release.
 
