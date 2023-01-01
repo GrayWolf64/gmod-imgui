@@ -5,18 +5,18 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Headers\detours">
-      <UniqueIdentifier>{ad333c04-75e7-4dcb-8eaf-a5037030c9df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Headers\glua">
-      <UniqueIdentifier>{1f245fcf-2d97-451c-9a8d-484a9776b4e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{44369626-e585-4bc7-8280-94874cda1f23}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headers\Detours">
+      <UniqueIdentifier>{ad333c04-75e7-4dcb-8eaf-a5037030c9df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\GLua">
+      <UniqueIdentifier>{1f245fcf-2d97-451c-9a8d-484a9776b4e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,25 +54,25 @@
       <Filter>ImGui</Filter>
     </ClInclude>
     <ClInclude Include="detours.h">
-      <Filter>Headers\detours</Filter>
+      <Filter>Headers\Detours</Filter>
     </ClInclude>
     <ClInclude Include="detver.h">
-      <Filter>Headers\detours</Filter>
+      <Filter>Headers\Detours</Filter>
     </ClInclude>
     <ClInclude Include="glua\Interface.h">
-      <Filter>Headers\glua</Filter>
+      <Filter>Headers\GLua</Filter>
     </ClInclude>
     <ClInclude Include="glua\LuaBase.h">
-      <Filter>Headers\glua</Filter>
+      <Filter>Headers\GLua</Filter>
     </ClInclude>
     <ClInclude Include="glua\SourceCompat.h">
-      <Filter>Headers\glua</Filter>
+      <Filter>Headers\GLua</Filter>
     </ClInclude>
     <ClInclude Include="glua\Types.h">
-      <Filter>Headers\glua</Filter>
+      <Filter>Headers\GLua</Filter>
     </ClInclude>
     <ClInclude Include="glua\UserData.h">
-      <Filter>Headers\glua</Filter>
+      <Filter>Headers\GLua</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
