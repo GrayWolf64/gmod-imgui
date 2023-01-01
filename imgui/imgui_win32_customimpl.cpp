@@ -34,7 +34,7 @@ namespace DXHook
 		io.MousePos = ImVec2(currentMousePos.x, currentMousePos.y);
 
 		if ((GetKeyState(VK_LBUTTON) & 0x8000) != 0)
-		{ // mouse down
+		{ // mouse left down
 			io.MouseDown[0] = true;
 		}
 		else

@@ -10,7 +10,6 @@
 #include "../imgui/imgui_impl_dx9.h"
 #include "../imgui/imgui_impl_win32.h"
 
-// new window procedure payload
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -48,7 +47,21 @@ namespace DXHook
 	}
 
 	int Initialize(GarrysMod::Lua::ILuaBase* LUA, bool OpenExConsole)
-    { // Used for setting up dummy device, and endscene hook
+    {
+        // Used for setting up dummy device, and endscene hook.
+
+        // setup key codes
+        // 0-9 key codes
+        for (int i = 0x30; i <= 0x39; i++)
+        {
+            keyCodes.push_back(i);
+        }
+
+        // A-Z key codes
+        for (int i = 0x41; i <= 0x5A; i++)
+        {
+            keyCodes.push_back(i);
+        }
 
         if (OpenExConsole)
         {
@@ -68,7 +81,7 @@ namespace DXHook
 
         if (GetD3D9Device(d3d9Device, sizeof(d3d9Device)))
         {
-            //hook stuff using the dumped addresses
+            // hook stuff using the dumped addresses
 
             using namespace std;
             stringstream hexLoc;
@@ -88,7 +101,7 @@ namespace DXHook
             LONG lError = DetourTransactionCommit(); // execute it
             if (lError != NO_ERROR)
             {
-                MessageBox(HWND_DESKTOP, L"failed to detour", L"puffy", MB_OK);
+                MessageBox(HWND_DESKTOP, L"Failed to detour", L"puffy", MB_OK);
                 return FALSE;
             }
             else
@@ -104,11 +117,12 @@ namespace DXHook
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
 
         RECT resolutionDetails;
-        GetClientRect(GetProcessWindow(), &resolutionDetails);
+        HWND gamehwnd = GetProcessWindow();
+        GetClientRect(gamehwnd, &resolutionDetails);
 
         ImGui::StyleColorsClassic();
 
-        ImGui_ImplWin32_Init(GetProcessWindow());
+        ImGui_ImplWin32_Init(gamehwnd);
 
         using namespace std;
         static bool isFullScreen;
@@ -116,7 +130,6 @@ namespace DXHook
         int WndWide = (resolutionDetails.right) - (resolutionDetails.left);
         int WndHeight = (resolutionDetails.bottom) - (resolutionDetails.top);
 
-        // GetSystemMetrics(SM_CYCAPTION)
         LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
         LUA->GetField(-1, "ScrW");
         LUA->Call(0, 1);
@@ -128,14 +141,19 @@ namespace DXHook
         int ScrH = (int)LUA->GetNumber(-1);
         LUA->Pop();
 
-        ImGui::GetMainViewport()->WorkSize = ImVec2(ScrW, ScrH);
         int ScrX = GetSystemMetrics(SM_CXSCREEN);
         int ScrY = GetSystemMetrics(SM_CYSCREEN);
 
         if (ScrX == WndWide && ScrY == WndHeight)
+        {
             isFullScreen = true;
+        }
         else
+        {
             isFullScreen = false;
+        }
+
+        //ImGui::GetMainViewport()->WorkSize = ImVec2(WndWide, WndHeight);
 
         if (OpenExConsole)
         {
@@ -148,24 +166,10 @@ namespace DXHook
         //io.DisplaySize.x = ScrX;
         //io.DisplaySize.y = ScrY;
 
-        // setup key codes
-        // 0-9 key codes
-        for (int i = 0x30; i <= 0x39; i++)
-        {
-            keyCodes.push_back(i);
-        }
-
-        // A-Z key codes
-        for (int i = 0x41; i <= 0x5A; i++)
-        {
-            keyCodes.push_back(i);
-        }
-
-        // cursed C++ is what i live for
-        LONG_PTR currentWndProc = GetWindowLongPtr(GetProcessWindow(), GWLP_WNDPROC);
+        LONG_PTR currentWndProc = GetWindowLongPtr(gamehwnd, GWLP_WNDPROC);
         originalWNDPROC = currentWndProc;
 
-        SetWindowLongPtr(GetProcessWindow(), GWLP_WNDPROC, (LONG_PTR)&WndProc);
+        SetWindowLongPtr(gamehwnd, GWLP_WNDPROC, (LONG_PTR)&WndProc);
 
         Sleep(150);
 
@@ -197,5 +201,6 @@ namespace DXHook
             SetWindowLongPtr(GetProcessWindow(), GWLP_WNDPROC, originalWNDPROC);
         }
         return 0;
-    } // Used for restoring the EndScene
+    }
+    // Used for restoring the EndScene.
 }
