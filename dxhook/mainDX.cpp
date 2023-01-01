@@ -1,6 +1,5 @@
 #include "../glua/Interface.h"
 #include "mainHook.h"
-#include <Windows.h>
 #include <iostream>
 #include <sstream>
 #include "../detours.h"

@@ -1,8 +1,7 @@
-#include <Windows.h>
-
 #include <d3d9.h>
 #include <string>
 #include "detours.h"
+#include "framework.h"
 
 #include "dxhook/mainHook.h"
 

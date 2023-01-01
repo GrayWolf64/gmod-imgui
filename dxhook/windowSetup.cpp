@@ -1,6 +1,5 @@
 #include "mainHook.h"
 #include <d3d9.h>
-#include <Windows.h>
 
 namespace DXHook
 {
