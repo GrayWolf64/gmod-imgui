@@ -2,10 +2,12 @@
 #include <d3d9.h>
 #include <Windows.h>
 
-namespace DXHook {
+namespace DXHook
+{
 	HWND window;
 
-	BOOL CALLBACK EnumWindowsCallback(HWND handle, LPARAM lParam) {
+	BOOL CALLBACK EnumWindowsCallback(HWND handle, LPARAM lParam)
+	{
 		DWORD wndProcId;
 		GetWindowThreadProcessId(handle, &wndProcId);
 
@@ -16,7 +18,8 @@ namespace DXHook {
 		return FALSE; // window found abort search
 	}
 
-	HWND GetProcessWindow() {
+	HWND GetProcessWindow()
+	{
 		window = NULL;
 		EnumWindows(EnumWindowsCallback, NULL);
 		return window;

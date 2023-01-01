@@ -5,13 +5,15 @@
 #include <Windows.h>
 #include <iostream>
 
-namespace DXHook {
+namespace DXHook
+{
 	EndScene oldFunc;
 	void* d3d9Device[119];
 	LPDIRECT3DDEVICE9 device;
 	bool gotDevice = false;
 
-	HRESULT __stdcall EndSceneHook(LPDIRECT3DDEVICE9 pDevice) {
+	HRESULT __stdcall EndSceneHook(LPDIRECT3DDEVICE9 pDevice)
+	{
 		if (!gotDevice) {
 			gotDevice = true;
 			device = pDevice;
@@ -34,7 +36,6 @@ namespace DXHook {
 		ImGui::Begin("Hello, world!");
 
 		ImGui::Text("This is some useful text.");
-		ImGui::Checkbox("Another Window", &showWnd);
 
 		ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
 		ImGui::ColorEdit3("clear color", (float*)&showWnd);
@@ -62,5 +63,4 @@ namespace DXHook {
 
         return result;
 	}
-
 }

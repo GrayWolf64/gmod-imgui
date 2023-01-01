@@ -24,7 +24,8 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
     ImGuiIO& io = ImGui::GetIO();
 
-    if (io.WantCaptureKeyboard && io.WantCaptureMouse) {
+    if (io.WantCaptureKeyboard && io.WantCaptureMouse)
+    {
         DefWindowProc(hWnd, msg, wParam, lParam);
 
         return true; // block the input from reaching the gmod window
@@ -33,10 +34,12 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return CallWindowProc((WNDPROC)DXHook::originalWNDPROC, hWnd, msg, wParam, lParam);
 }
 
-namespace DXHook {
+namespace DXHook
+{
     LONG_PTR originalWNDPROC;
 
-	inline void error(GarrysMod::Lua::ILuaBase* LUA, const char* str) {
+	inline void error(GarrysMod::Lua::ILuaBase* LUA, const char* str)
+    {
 		LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
 		LUA->GetField(-1, "print");
 		LUA->PushString(str);
@@ -45,7 +48,8 @@ namespace DXHook {
 		LUA->Pop();
 	}
 
-	int Initialize(GarrysMod::Lua::ILuaBase* LUA, bool OpenExConsole) { // Used for setting up dummy device, and endscene hook
+	int Initialize(GarrysMod::Lua::ILuaBase* LUA, bool OpenExConsole)
+    { // Used for setting up dummy device, and endscene hook
 
         if (OpenExConsole)
         {
@@ -57,7 +61,8 @@ namespace DXHook {
         HMODULE hDLL;
         hDLL = GetModuleHandleA("d3d9.dll"); // Attempt to locate the d3d9 dll that gmod loaded
 
-        if (hDLL == NULL) {
+        if (hDLL == NULL)
+        {
             error(LUA, "Unable to locate d3d9.dll in the loaded memory");
             return 0;
         }
@@ -82,14 +87,15 @@ namespace DXHook {
             // the "&(PVOID&)"
 
             LONG lError = DetourTransactionCommit(); // execute it
-            if (lError != NO_ERROR) {
+            if (lError != NO_ERROR)
+            {
                 MessageBox(HWND_DESKTOP, L"failed to detour", L"puffy", MB_OK);
                 return FALSE;
             }
-            else {
+            else
+            {
                 error(LUA, "Successfully got EndScene address, converted to function--detoured and ready");
             }
-
         }
 
         IMGUI_CHECKVERSION();
@@ -101,7 +107,6 @@ namespace DXHook {
         RECT resolutionDetails;
         GetClientRect(GetProcessWindow(), &resolutionDetails);
 
-        // Setup Dear ImGui style
         ImGui::StyleColorsClassic();
 
         ImGui_ImplWin32_Init(GetProcessWindow());
@@ -146,12 +151,14 @@ namespace DXHook {
 
         // setup key codes
         // 0-9 key codes
-        for (int i = 0x30; i <= 0x39; i++) {
+        for (int i = 0x30; i <= 0x39; i++)
+        {
             keyCodes.push_back(i);
         }
 
         // A-Z key codes
-        for (int i = 0x41; i <= 0x5A; i++) {
+        for (int i = 0x41; i <= 0x5A; i++)
+        {
             keyCodes.push_back(i);
         }
 
@@ -166,7 +173,8 @@ namespace DXHook {
         return 0;
 	}
 
-    int Cleanup(GarrysMod::Lua::ILuaBase* LUA) {
+    int Cleanup(GarrysMod::Lua::ILuaBase* LUA)
+    {
         FreeConsole();
 
         DetourTransactionBegin();
@@ -189,7 +197,6 @@ namespace DXHook {
 
             SetWindowLongPtr(GetProcessWindow(), GWLP_WNDPROC, originalWNDPROC);
         }
-
         return 0;
     } // Used for restoring the EndScene
 }

@@ -2,7 +2,8 @@
 #include <d3d9.h>
 #pragma comment(lib, "d3d9.lib")
 
-namespace DXHook {
+namespace DXHook
+{
     // i forgot who made this but it wasnt me but atleast I understand it
 	bool GetD3D9Device(void** pTable, size_t Size) {
         if (!pTable) // make sure we have a valid destination of an array of void* objects
