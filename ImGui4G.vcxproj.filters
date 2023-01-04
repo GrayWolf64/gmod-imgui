@@ -23,9 +23,6 @@
     <ClInclude Include="framework.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="d3d9.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="dxhook\mainHook.h">
       <Filter>Headers</Filter>
     </ClInclude>
