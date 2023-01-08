@@ -40,7 +40,6 @@ namespace DXHook
 		ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
 
         HRESULT result = oldFunc(pDevice);
-
         return result;
 	}
 }
