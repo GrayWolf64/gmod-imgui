@@ -1,5 +1,7 @@
 # gmod-imgui
 
+![GitHub repo size](https://img.shields.io/github/repo-size/GrayWolf64/gmod-imgui)
+
 Other Tools Used: 
 1. [Trailing Whitespace Visualizer](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.TrailingWhitespaceVisualizer).
 2. [Intel® oneAPI DPC++/C++ Compiler](https://www.intel.com/content/www/us/en/developer/tools/oneapi/dpc-compiler.html) (Not using it at the present because it causes GMod (x86-x64 branch) to fail to load the binary module when built x64 Release).
