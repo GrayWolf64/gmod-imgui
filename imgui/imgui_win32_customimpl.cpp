@@ -1,7 +1,7 @@
 #include "../dxhook/mainHook.h"
 #include <d3d9.h>
-#include "../imgui/backends/imgui_impl_dx9.h"
-#include "../imgui/backends/imgui_impl_win32.h"
+#include "../imgui/imgui_impl_dx9.h"
+#include "../imgui/imgui_impl_win32.h"
 #include <Windows.h>
 #include <vector>
 
