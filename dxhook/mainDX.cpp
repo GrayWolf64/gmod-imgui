@@ -6,9 +6,8 @@
 
 #pragma comment(lib, "detours.lib")
 
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_impl_dx9.h"
-#include "../imgui/imgui_impl_win32.h"
+#include "../imgui/backends/imgui_impl_dx9.h"
+#include "../imgui/backends/imgui_impl_win32.h"
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -20,7 +19,7 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     */
 
     ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
-    ImGuiIO& io = ImGui::GetIO();
+    ImGuiIO &io = ImGui::GetIO();
 
     if (io.WantCaptureKeyboard && io.WantCaptureMouse)
     {
@@ -36,17 +35,17 @@ namespace DXHook
 {
     LONG_PTR originalWNDPROC;
 
-	inline void error(GarrysMod::Lua::ILuaBase* LUA, const char* str)
+    inline void error(GarrysMod::Lua::ILuaBase *LUA, const char *str)
     {
-		LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
-		LUA->GetField(-1, "print");
-		LUA->PushString(str);
+        LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
+        LUA->GetField(-1, "print");
+        LUA->PushString(str);
 
-		LUA->Call(1, 0);
-		LUA->Pop();
-	}
+        LUA->Call(1, 0);
+        LUA->Pop();
+    }
 
-	int Initialize(GarrysMod::Lua::ILuaBase* LUA, bool OpenExConsole)
+    int Initialize(GarrysMod::Lua::ILuaBase *LUA, bool OpenExConsole)
     {
         // used for setting up dummy device, and endscene hook
 
@@ -66,7 +65,7 @@ namespace DXHook
         if (OpenExConsole)
         {
             AllocConsole();
-            FILE* pFile = nullptr;
+            FILE *pFile = nullptr;
             freopen_s(&pFile, "CONOUT$", "w", stdout); // cursed way to redirect stdout to our own console
         }
 
@@ -95,7 +94,7 @@ namespace DXHook
 
             DetourTransactionBegin(); // use MS detours to detour our EndScene
             DetourUpdateThread(GetCurrentThread());
-            DetourAttach(&(PVOID&)oldFunc, EndSceneHook); // if im gon be straight honest i took this from guidedhacking and I don't entirely get
+            DetourAttach(&(PVOID &)oldFunc, EndSceneHook); // if im gon be straight honest i took this from guidedhacking and I don't entirely get
             // the "&(PVOID&)"
 
             LONG lError = DetourTransactionCommit(); // execute it
@@ -112,7 +111,7 @@ namespace DXHook
 
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
-        ImGuiIO& io = ImGui::GetIO();// (void)io;
+        ImGuiIO &io = ImGui::GetIO(); // (void)io;
 
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
@@ -153,7 +152,7 @@ namespace DXHook
             isFullScreen = false;
         }
 
-        //ImGui::GetMainViewport()->WorkSize = ImVec2(WndWide, WndHeight);
+        // ImGui::GetMainViewport()->WorkSize = ImVec2(WndWide, WndHeight);
 
         if (OpenExConsole)
         {
@@ -163,8 +162,8 @@ namespace DXHook
             cout << "isFullScreen: " << isFullScreen << endl;
         }
 
-        //io.DisplaySize.x = ScrX;
-        //io.DisplaySize.y = ScrY;
+        // io.DisplaySize.x = ScrX;
+        // io.DisplaySize.y = ScrY;
 
         LONG_PTR currentWndProc = GetWindowLongPtr(gamehwnd, GWLP_WNDPROC);
         originalWNDPROC = currentWndProc;
@@ -174,22 +173,24 @@ namespace DXHook
         Sleep(150);
 
         return 0;
-	}
+    }
 
-    int Cleanup(GarrysMod::Lua::ILuaBase* LUA)
+    int Cleanup(GarrysMod::Lua::ILuaBase *LUA)
     {
         FreeConsole();
 
         DetourTransactionBegin();
         DetourUpdateThread(GetCurrentThread());
-        DetourDetach(&(PVOID&)oldFunc, EndSceneHook);
+        DetourDetach(&(PVOID &)oldFunc, EndSceneHook);
 
         LONG lError = DetourTransactionCommit();
-        if (lError != NO_ERROR) {
+        if (lError != NO_ERROR)
+        {
             MessageBox(HWND_DESKTOP, L"failed to revert detour", L"puffy", MB_OK);
             return FALSE;
         }
-        else {
+        else
+        {
             error(LUA, "Reverted detour on EndScene..");
 
             ImGui_ImplDX9_Shutdown();

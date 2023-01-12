@@ -1,12 +1,12 @@
 #include "mainHook.h"
 #include <d3d9.h>
-#include "../imgui/imgui_impl_dx9.h"
-#include "../imgui/imgui_impl_win32.h"
+#include "../imgui/backends/imgui_impl_dx9.h"
+#include "../imgui/backends/imgui_impl_win32.h"
 
 namespace DXHook
 {
 	EndScene oldFunc;
-	void* d3d9Device[119];
+	void *d3d9Device[119];
 	LPDIRECT3DDEVICE9 device;
 	bool gotDevice = false;
 
@@ -26,7 +26,7 @@ namespace DXHook
 		ImGui::NewFrame();
 		DXHook::UpdateImGUI();
 
-        // removing SetNextWindowFocus here helps the window's popups work properly
+		// removing SetNextWindowFocus here helps the window's popups work properly
 		ImGui::ShowDemoWindow();
 
 		ImGui::EndFrame();
@@ -38,7 +38,7 @@ namespace DXHook
 		ImGui::Render();
 		ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
 
-        HRESULT result = oldFunc(pDevice);
-        return result;
+		HRESULT result = oldFunc(pDevice);
+		return result;
 	}
 }
