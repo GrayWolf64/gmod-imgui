@@ -2,7 +2,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/GrayWolf64/gmod-imgui)
 
-This is still Work-In-Progress.
+### This is still Work-In-Progress.
 
 Other Tools Used: 
 1. [Trailing Whitespace Visualizer](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.TrailingWhitespaceVisualizer).
